@@ -1,0 +1,11 @@
+$ lab1.py
+CASE | INPUT(score,documents,semesters,day,prob) | EXPECTED | ACTUAL | REASON | THRESHOLD | DISAGREE
+pass | (85, True, 3, 4, 0.83) | Review | Review | All stated conditions passed | Review | False
+semesters_fail | (86, True, 1, 3, 0.88) | Hold | Hold | Fewer than two completed semesters | Review | True
+timing_fail | (90, True, 4, 14, 0.91) | Hold | Hold | Submission after day 10 | Review | True
+all_boundaries | (70, True, 2, 10, 0.7) | Review | Review | All stated conditions passed | Review | False
+ADDITIONAL EDGE CHECKS
+(94, False, 4, 3, 0.93) ('Hold', 'Documents incomplete') Review
+(69, True, 3, 2, 0.69) ('Hold', 'Score less than 70') Hold
+(70, True, 2, 11, 0.7) ('Hold', 'Submission after day 10') Review
+
