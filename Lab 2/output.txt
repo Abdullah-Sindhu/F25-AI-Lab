@@ -1,0 +1,13 @@
+$ lab2.py
+STEP | PERCEPT | REFLEX MODE | PREVIOUS | TARGET | OUTPUT
+1 | (27, True) | COOL | None | COOL | COMMAND
+2 | (27, True) | COOL | COOL | COOL | NO COMMAND
+3 | (26, True) | IDLE | COOL | IDLE | COMMAND
+4 | (20, True) | IDLE | IDLE | IDLE | NO COMMAND
+5 | (19, True) | WARM | IDLE | WARM | COMMAND
+6 | (24, False) | ECO | WARM | ECO | COMMAND
+7 | (19, False) | ECO | ECO | ECO | NO COMMAND
+8 | (27, True) | COOL | ECO | COOL | COMMAND
+9 | (25, True) | IDLE | COOL | IDLE | COMMAND
+10 | (27, True) | COOL | IDLE | COOL | COMMAND
+
