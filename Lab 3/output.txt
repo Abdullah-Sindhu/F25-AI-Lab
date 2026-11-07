@@ -1,0 +1,18 @@
+$ lab3.py
+BFS (['A', 'B', 'E', 'G'], [('A', ['A'], []), ('B', ['A', 'B'], ['C']), ('C', ['A', 'C'], ['D', 'E']), ('D', ['A', 'B', 'D'], ['E', 'F']), ('E', ['A', 'B', 'E'], ['F']), ('F', ['A', 'C', 'F'], ['G']), ('G', ['A', 'B', 'E', 'G'], [])])
+DFS (['A', 'B', 'E', 'G'], [('A', ['A'], ['C', 'B']), ('B', ['A', 'B'], ['C', 'E', 'D']), ('D', ['A', 'B', 'D'], ['C', 'E']), ('E', ['A', 'B', 'E'], ['C', 'G']), ('G', ['A', 'B', 'E', 'G'], ['C'])])
+DLS 1 ('CUTOFF', None)
+IDDFS 1 ('CUTOFF', None, [(0, 'CUTOFF'), (1, 'CUTOFF')])
+DLS 2 ('CUTOFF', None)
+IDDFS 2 ('CUTOFF', None, [(0, 'CUTOFF'), (1, 'CUTOFF'), (2, 'CUTOFF')])
+DLS 3 ('FOUND', ['A', 'B', 'E', 'G'])
+IDDFS 3 ('FOUND', ['A', 'B', 'E', 'G'], [(0, 'CUTOFF'), (1, 'CUTOFF'), (2, 'CUTOFF'), (3, 'FOUND')])
+DLS 4 ('FOUND', ['A', 'B', 'E', 'G'])
+IDDFS 4 ('FOUND', ['A', 'B', 'E', 'G'], [(0, 'CUTOFF'), (1, 'CUTOFF'), (2, 'CUTOFF'), (3, 'FOUND')])
+WEIGHTED EDGES {'A': [('B', 2), ('C', 1)], 'B': [('D', 2), ('E', 2)], 'C': [('F', 1), ('G', 8)], 'D': [], 'E': [('G', 2)], 'F': [], 'G': []}
+WEIGHTED BFS (['A', 'C', 'G'], [('A', ['A'], []), ('B', ['A', 'B'], ['C']), ('C', ['A', 'C'], ['D', 'E']), ('D', ['A', 'B', 'D'], ['E', 'F', 'G']), ('E', ['A', 'B', 'E'], ['F', 'G']), ('F', ['A', 'C', 'F'], ['G']), ('G', ['A', 'C', 'G'], [])])
+UCS (6, ['A', 'B', 'E', 'G'], ['A', 'C', 'B', 'F', 'D', 'E', 'G'])
+EDGE start=goal (['A'], [('A', ['A'], [])])
+EDGE unreachable ('FAILURE', None)
+EDGE cycle (['A', 'B', 'E', 'G'], [('A', ['A'], []), ('B', ['A', 'B'], ['C']), ('C', ['A', 'C'], ['D', 'E']), ('D', ['A', 'B', 'D'], ['E', 'F']), ('E', ['A', 'B', 'E'], ['F']), ('F', ['A', 'C', 'F'], ['G']), ('G', ['A', 'B', 'E', 'G'], [])])
+
