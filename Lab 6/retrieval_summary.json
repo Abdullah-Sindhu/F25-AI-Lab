@@ -1,0 +1,77 @@
+{
+  "selected_development_only": [
+    "tfidf",
+    "sentence"
+  ],
+  "results": {
+    "tfidf:window0": {
+      "development": {
+        "hit3": 0.5,
+        "mrr3": 0.5,
+        "search_seconds": 0.0018870899993999046,
+        "query_count": 4
+      },
+      "held_out": {
+        "hit3": 0.5,
+        "mrr3": 0.5,
+        "search_seconds": 0.001511474000835733,
+        "query_count": 4
+      },
+      "unanswerable": {
+        "hit3": null,
+        "mrr3": null,
+        "search_seconds": 0.0006683809997412027,
+        "query_count": 2
+      },
+      "chunks": 25,
+      "encoding_seconds": 0.0032101239994517528,
+      "model_load_seconds": 0.0
+    },
+    "tfidf:window10": {
+      "development": {
+        "hit3": 0.5,
+        "mrr3": 0.5,
+        "search_seconds": 0.0015235840000968892,
+        "query_count": 4
+      },
+      "held_out": {
+        "hit3": 0.5,
+        "mrr3": 0.5,
+        "search_seconds": 0.00172762399961357,
+        "query_count": 4
+      },
+      "unanswerable": {
+        "hit3": null,
+        "mrr3": null,
+        "search_seconds": 0.0016540459992029355,
+        "query_count": 2
+      },
+      "chunks": 30,
+      "encoding_seconds": 0.002083325999592489,
+      "model_load_seconds": 0.0
+    },
+    "tfidf:sentence": {
+      "development": {
+        "hit3": 1.0,
+        "mrr3": 0.8333333333333334,
+        "search_seconds": 0.002185626000937191,
+        "query_count": 4
+      },
+      "held_out": {
+        "hit3": 0.75,
+        "mrr3": 0.75,
+        "search_seconds": 0.0041637900003479444,
+        "query_count": 4
+      },
+      "unanswerable": {
+        "hit3": null,
+        "mrr3": null,
+        "search_seconds": 0.0015321189994210727,
+        "query_count": 2
+      },
+      "chunks": 27,
+      "encoding_seconds": 0.0017204639998453786,
+      "model_load_seconds": 0.0
+    }
+  }
+}

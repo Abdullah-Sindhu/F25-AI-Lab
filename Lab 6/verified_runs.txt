@@ -1,0 +1,321 @@
+RUN task1_tokens.py: exit=0
+TEXT: 'Hello, world!'
+WHITESPACE: ['Hello,', 'world!'] COUNT: 2
+UNICODE WORD-LIKE: ['Hello', 'world'] COUNT: 2
+TEXT: "I can't submit late!"
+WHITESPACE: ['I', "can't", 'submit', 'late!'] COUNT: 4
+UNICODE WORD-LIKE: ['I', 'can', 't', 'submit', 'late'] COUNT: 5
+TEXT: 'student@example.com'
+WHITESPACE: ['student@example.com'] COUNT: 1
+UNICODE WORD-LIKE: ['student', 'example', 'com'] COUNT: 3
+TEXT: 'CS4944'
+WHITESPACE: ['CS4944'] COUNT: 1
+UNICODE WORD-LIKE: ['CS4944'] COUNT: 1
+TEXT: ''
+WHITESPACE: [] COUNT: 0
+UNICODE WORD-LIKE: [] COUNT: 0
+TEXT: 'میں اردو پڑھتا ہوں'
+WHITESPACE: ['میں', 'اردو', 'پڑھتا', 'ہوں'] COUNT: 4
+UNICODE WORD-LIKE: ['میں', 'اردو', 'پڑھتا', 'ہوں'] COUNT: 4
+MODEL TOKENIZER NOT RUN: ModuleNotFoundError No module named 'sentence_transformers'
+
+
+
+RUN task1_chatbot_check.py: exit=0
+QUESTION: 'How do I reset my password?'
+RESPONSE: Use the recovery link on the login page. [source: it_help.txt]
+QUESTION: 'reset forgotten account'
+RESPONSE: Possible FAQ matches. Confirm a listed question before using an answer:
+How do I reset my password? (0.3223)
+Where do I submit my assignment? (0.0000)
+Can illness justify a late submission? (0.0000)
+QUESTION: ''
+RESPONSE: Please enter a question.
+QUESTION: 'volcano geology'
+RESPONSE: No matching FAQ. Please contact the help desk.
+
+
+
+RUN task2_chunks.py: exit=0
+DOCUMENT handbook WORDS 169
+DOCUMENT accounts WORDS 171
+DOCUMENT fees WORDS 173
+DOCUMENT library WORDS 171
+DOCUMENT exams WORDS 177
+STRATEGY window0 {'chunks': 25, 'sizes': [40, 40, 40, 40, 9, 40, 40, 40, 40, 11, 40, 40, 40, 40, 13, 40, 40, 40, 40, 11, 40, 40, 40, 40, 17], 'repeated_words': 0, 'evidence_coverage': '5/8'}
+STRATEGY window10 {'chunks': 30, 'sizes': [40, 40, 40, 40, 40, 19, 40, 40, 40, 40, 40, 21, 40, 40, 40, 40, 40, 23, 40, 40, 40, 40, 40, 21, 40, 40, 40, 40, 40, 27], 'repeated_words': 250, 'evidence_coverage': '6/8'}
+STRATEGY sentence {'chunks': 27, 'sizes': [24, 31, 39, 34, 31, 10, 28, 40, 34, 28, 33, 8, 26, 40, 33, 39, 35, 29, 37, 27, 39, 39, 37, 32, 34, 38, 36], 'repeated_words': 0, 'evidence_coverage': '8/8'}
+EMPTY [] []
+SHORT [(0, 10)] [(0, 10)]
+INVALID OVERLAP Invalid size or overlap
+LONG SENTENCE [(0, 199), (200, 399), (400, 424)]
+ABBREVIATION [(0, 49)]
+
+
+
+RUN task3_retrieval.py: exit=0
+TOKEN AUDIT tfidf window0 MODEL TOKEN LENGTH NOT APPLICABLE
+CONFIG tfidf window0 CHUNKS 25 WORDS INDEXED 861 ENCODE/INDEX SEC 0.003210
+TOP3 tfidf window0 development Q01 1 handbook:window0:0 score=0.2818 offsets=0:260 relevant=False
+EVIDENCE Coursework must normally be uploaded through the learning portal before the deadline. Late coursework normally receives a penalty when the deadline has already passed. A student who is ill may request an extension before the deadline when a medical certificate
+TOP3 tfidf window0 development Q01 2 fees:window0:1 score=0.1772 offsets=238:488 relevant=False
+EVIDENCE the amount owed. The finance office may ask for supporting information before making a decision. Late requests may be considered separately but approval is not automatic. Students should keep a receipt for every payment they make. An email asking for
+TOP3 tfidf window0 development Q01 3 exams:window0:2 score=0.1593 offsets=501:760 relevant=False
+EVIDENCE during an examination. Instructions from the supervising staff must be followed. The fictional examination office stores the room and date for each paper. A student should read the official notice before travelling to campus for an exam. This synthetic sample
+TOP3 tfidf window0 development Q02 1 accounts:window0:1 score=0.2545 offsets=233:488 relevant=False
+EVIDENCE desk with identification. IT staff must not request that students share a current password or recovery code. An account may be temporarily locked after repeated failed login attempts. A staff member verifies the request before resetting an account with no
+TOP3 tfidf window0 development Q02 2 library:window0:4 score=0.2474 offsets=1000:1065 relevant=False
+EVIDENCE should include the book title but not a private account password.
+TOP3 tfidf window0 development Q02 3 accounts:window0:2 score=0.1974 offsets=489:735 relevant=False
+EVIDENCE email access. Changing a password does not automatically change a course enrolment. Students should sign out of computers they do not own. A student should check the official portal address before using a login or recovery form. In this fictional
+TOP3 tfidf window0 development Q03 1 fees:window0:0 score=0.1906 offsets=0:237 relevant=True
+EVIDENCE The regular fee payment deadline is shown on the student finance page. A student facing financial hardship may request a payment plan before the due date. Only an approved payment plan changes the payment schedule, and it does not cancel
+TOP3 tfidf window0 development Q03 2 fees:window0:4 score=0.1356 offsets=1041:1138 relevant=False
+EVIDENCE numbers or personal transactions are included. Different courses may use different fee schedules.
+TOP3 tfidf window0 development Q03 3 accounts:window0:3 score=0.1169 offsets=736:977 relevant=False
+EVIDENCE exercise every example uses made-up details rather than real credentials. The service desk keeps a reference number so a student can ask about the progress of a request. A student should check the official portal address before using a login
+TOP3 tfidf window0 development Q04 1 library:window0:0 score=0.6050 offsets=0:233 relevant=True
+EVIDENCE A library book may be borrowed for fourteen days under the standard student loan rule. A student may renew a book unless another student has already reserved that copy. When a reservation exists the borrower should return the book by
+TOP3 tfidf window0 development Q04 2 library:window0:4 score=0.1390 offsets=1000:1065 relevant=False
+EVIDENCE should include the book title but not a private account password.
+TOP3 tfidf window0 development Q04 3 handbook:window0:0 score=0.0900 offsets=0:260 relevant=False
+EVIDENCE Coursework must normally be uploaded through the learning portal before the deadline. Late coursework normally receives a penalty when the deadline has already passed. A student who is ill may request an extension before the deadline when a medical certificate
+DEV METRICS tfidf window0 {'hit3': 0.5, 'mrr3': 0.5, 'search_seconds': 0.0018870899993999046, 'query_count': 4}
+TOKEN AUDIT tfidf window10 MODEL TOKEN LENGTH NOT APPLICABLE
+CONFIG tfidf window10 CHUNKS 30 WORDS INDEXED 1111 ENCODE/INDEX SEC 0.002083
+TOP3 tfidf window10 development Q01 1 handbook:window10:0 score=0.2851 offsets=0:260 relevant=False
+EVIDENCE Coursework must normally be uploaded through the learning portal before the deadline. Late coursework normally receives a penalty when the deadline has already passed. A student who is ill may request an extension before the deadline when a medical certificate
+TOP3 tfidf window10 development Q01 2 handbook:window10:1 score=0.2198 offsets=193:449 relevant=False
+EVIDENCE request an extension before the deadline when a medical certificate is provided. The course coordinator checks the evidence and confirms whether the extension is approved. A message from a friend is not accepted as medical evidence. The student should keep
+TOP3 tfidf window10 development Q01 3 fees:window10:2 score=0.1399 offsets=367:621 relevant=False
+EVIDENCE separately but approval is not automatic. Students should keep a receipt for every payment they make. An email asking for money outside the official portal should be reported. The finance office can explain the outstanding balance in an account. Students
+TOP3 tfidf window10 development Q02 1 accounts:window10:2 score=0.3345 offsets=357:618 relevant=False
+EVIDENCE be temporarily locked after repeated failed login attempts. A staff member verifies the request before resetting an account with no email access. Changing a password does not automatically change a course enrolment. Students should sign out of computers they do
+TOP3 tfidf window10 development Q02 2 accounts:window10:1 score=0.2337 offsets=170:424 relevant=False
+EVIDENCE registered email is unavailable, the student must visit the IT desk with identification. IT staff must not request that students share a current password or recovery code. An account may be temporarily locked after repeated failed login attempts. A staff
+TOP3 tfidf window10 development Q02 3 library:window10:5 score=0.1997 offsets=934:1065 relevant=False
+EVIDENCE the borrowing limits are only imaginary examples. A library email should include the book title but not a private account password.
+TOP3 tfidf window10 development Q03 1 fees:window10:0 score=0.2075 offsets=0:237 relevant=True
+EVIDENCE The regular fee payment deadline is shown on the student finance page. A student facing financial hardship may request a payment plan before the due date. Only an approved payment plan changes the payment schedule, and it does not cancel
+TOP3 tfidf window10 development Q03 2 fees:window10:5 score=0.1186 offsets=971:1138 relevant=False
+EVIDENCE social-media message. In this fictional finance guide no bank account numbers or personal transactions are included. Different courses may use different fee schedules.
+TOP3 tfidf window10 development Q03 3 accounts:window10:4 score=0.1113 offsets=736:977 relevant=False
+EVIDENCE exercise every example uses made-up details rather than real credentials. The service desk keeps a reference number so a student can ask about the progress of a request. A student should check the official portal address before using a login
+TOP3 tfidf window10 development Q04 1 library:window10:0 score=0.6090 offsets=0:233 relevant=True
+EVIDENCE A library book may be borrowed for fourteen days under the standard student loan rule. A student may renew a book unless another student has already reserved that copy. When a reservation exists the borrower should return the book by
+TOP3 tfidf window10 development Q04 2 accounts:window10:1 score=0.1103 offsets=170:424 relevant=False
+EVIDENCE registered email is unavailable, the student must visit the IT desk with identification. IT staff must not request that students share a current password or recovery code. An account may be temporarily locked after repeated failed login attempts. A staff
+TOP3 tfidf window10 development Q04 3 handbook:window10:0 score=0.0926 offsets=0:260 relevant=False
+EVIDENCE Coursework must normally be uploaded through the learning portal before the deadline. Late coursework normally receives a penalty when the deadline has already passed. A student who is ill may request an extension before the deadline when a medical certificate
+DEV METRICS tfidf window10 {'hit3': 0.5, 'mrr3': 0.5, 'search_seconds': 0.0015235840000968892, 'query_count': 4}
+TOKEN AUDIT tfidf sentence MODEL TOKEN LENGTH NOT APPLICABLE
+CONFIG tfidf sentence CHUNKS 27 WORDS INDEXED 861 ENCODE/INDEX SEC 0.001720
+TOP3 tfidf sentence development Q01 1 handbook:sentence:1 score=0.3756 offsets=167:364 relevant=True
+EVIDENCE A student who is ill may request an extension before the deadline when a medical certificate is provided. The course coordinator checks the evidence and confirms whether the extension is approved.
+TOP3 tfidf sentence development Q01 2 fees:sentence:2 score=0.1458 offsets=408:612 relevant=False
+EVIDENCE Students should keep a receipt for every payment they make. An email asking for money outside the official portal should be reported. The finance office can explain the outstanding balance in an account.
+TOP3 tfidf sentence development Q01 3 accounts:sentence:2 score=0.1327 offsets=416:627 relevant=False
+EVIDENCE A staff member verifies the request before resetting an account with no email access. Changing a password does not automatically change a course enrolment. Students should sign out of computers they do not own.
+TOP3 tfidf sentence development Q02 1 accounts:sentence:2 score=0.2478 offsets=416:627 relevant=False
+EVIDENCE A staff member verifies the request before resetting an account with no email access. Changing a password does not automatically change a course enrolment. Students should sign out of computers they do not own.
+TOP3 tfidf sentence development Q02 2 accounts:sentence:1 score=0.2388 offsets=162:416 relevant=False
+EVIDENCE If the registered email is unavailable, the student must visit the IT desk with identification. IT staff must not request that students share a current password or recovery code. An account may be temporarily locked after repeated failed login attempts.
+TOP3 tfidf sentence development Q02 3 accounts:sentence:0 score=0.1803 offsets=0:162 relevant=True
+EVIDENCE A forgotten password can be reset using the recovery link on the login page. The recovery email is sent to the registered address attached to the student account.
+TOP3 tfidf sentence development Q03 1 fees:sentence:0 score=0.2797 offsets=0:154 relevant=True
+EVIDENCE The regular fee payment deadline is shown on the student finance page. A student facing financial hardship may request a payment plan before the due date.
+TOP3 tfidf sentence development Q03 2 accounts:sentence:4 score=0.1444 offsets=809:995 relevant=False
+EVIDENCE The service desk keeps a reference number so a student can ask about the progress of a request. A student should check the official portal address before using a login or recovery form.
+TOP3 tfidf sentence development Q03 3 library:sentence:1 score=0.1198 offsets=168:374 relevant=False
+EVIDENCE When a reservation exists the borrower should return the book by the stated due date. An overdue return can lead to a fine shown on the library account. Students can check loan dates in the library portal.
+TOP3 tfidf sentence development Q04 1 library:sentence:0 score=0.6542 offsets=0:168 relevant=True
+EVIDENCE A library book may be borrowed for fourteen days under the standard student loan rule. A student may renew a book unless another student has already reserved that copy.
+TOP3 tfidf sentence development Q04 2 accounts:sentence:1 score=0.1045 offsets=162:416 relevant=False
+EVIDENCE If the registered email is unavailable, the student must visit the IT desk with identification. IT staff must not request that students share a current password or recovery code. An account may be temporarily locked after repeated failed login attempts.
+TOP3 tfidf sentence development Q04 3 library:sentence:4 score=0.0799 offsets=810:1065 relevant=False
+EVIDENCE During examinations students may borrow several books, but the normal return rule still applies. In this training document the borrowing limits are only imaginary examples. A library email should include the book title but not a private account password.
+DEV METRICS tfidf sentence {'hit3': 1.0, 'mrr3': 0.8333333333333334, 'search_seconds': 0.002185626000937191, 'query_count': 4}
+SELECTED USING DEVELOPMENT ONLY ('tfidf', 'sentence')
+TOP3 tfidf window0 test Q05 1 exams:window0:0 score=0.2173 offsets=0:251 relevant=True
+EVIDENCE Students should bring a valid identification card to the examination room. If a student forgets the card, the examination office must verify identity before entry. A screenshot of a card is not automatically accepted as a replacement. The timetable is
+TOP3 tfidf window0 test Q05 2 exams:window0:3 score=0.1932 offsets=761:1007 relevant=False
+EVIDENCE does not describe the rules of any particular institution. The fictional examination office stores the room and date for each paper. A student should read the official notice before travelling to campus for an exam. This synthetic sample does not
+TOP3 tfidf window0 test Q05 3 accounts:window0:2 score=0.1801 offsets=489:735 relevant=False
+EVIDENCE email access. Changing a password does not automatically change a course enrolment. Students should sign out of computers they do not own. A student should check the official portal address before using a login or recovery form. In this fictional
+TOP3 tfidf window0 test Q06 1 handbook:window0:0 score=0.3447 offsets=0:260 relevant=True
+EVIDENCE Coursework must normally be uploaded through the learning portal before the deadline. Late coursework normally receives a penalty when the deadline has already passed. A student who is ill may request an extension before the deadline when a medical certificate
+TOP3 tfidf window0 test Q06 2 fees:window0:0 score=0.2122 offsets=0:237 relevant=False
+EVIDENCE The regular fee payment deadline is shown on the student finance page. A student facing financial hardship may request a payment plan before the due date. Only an approved payment plan changes the payment schedule, and it does not cancel
+TOP3 tfidf window0 test Q06 3 handbook:window0:1 score=0.1986 offsets=261:509 relevant=False
+EVIDENCE is provided. The course coordinator checks the evidence and confirms whether the extension is approved. A message from a friend is not accepted as medical evidence. The student should keep the upload receipt and the response from the course office.
+TOP3 tfidf window0 test Q07 1 fees:window0:0 score=0.4966 offsets=0:237 relevant=False
+EVIDENCE The regular fee payment deadline is shown on the student finance page. A student facing financial hardship may request a payment plan before the due date. Only an approved payment plan changes the payment schedule, and it does not cancel
+TOP3 tfidf window0 test Q07 2 accounts:window0:2 score=0.1565 offsets=489:735 relevant=False
+EVIDENCE email access. Changing a password does not automatically change a course enrolment. Students should sign out of computers they do not own. A student should check the official portal address before using a login or recovery form. In this fictional
+TOP3 tfidf window0 test Q07 3 handbook:window0:2 score=0.1320 offsets=510:748 relevant=False
+EVIDENCE An approved extension changes the submission date but does not remove academic integrity rules. If the student cannot open the portal, the student should report the issue to the help desk. During a busy week, the course office may receive
+TOP3 tfidf window0 test Q08 1 accounts:window0:2 score=0.2109 offsets=489:735 relevant=False
+EVIDENCE email access. Changing a password does not automatically change a course enrolment. Students should sign out of computers they do not own. A student should check the official portal address before using a login or recovery form. In this fictional
+TOP3 tfidf window0 test Q08 2 exams:window0:3 score=0.1338 offsets=761:1007 relevant=False
+EVIDENCE does not describe the rules of any particular institution. The fictional examination office stores the room and date for each paper. A student should read the official notice before travelling to campus for an exam. This synthetic sample does not
+TOP3 tfidf window0 test Q08 3 library:window0:1 score=0.1306 offsets=234:474 relevant=False
+EVIDENCE the stated due date. An overdue return can lead to a fine shown on the library account. Students can check loan dates in the library portal. Reference-only materials must stay inside the library building. Damaged books should be reported to
+TOP3 tfidf window0 unanswerable Q09 1 handbook:window0:1 score=0.3070 offsets=261:509 relevant=False
+EVIDENCE is provided. The course coordinator checks the evidence and confirms whether the extension is approved. A message from a friend is not accepted as medical evidence. The student should keep the upload receipt and the response from the course office.
+TOP3 tfidf window0 unanswerable Q09 2 exams:window0:0 score=0.2987 offsets=0:251 relevant=False
+EVIDENCE Students should bring a valid identification card to the examination room. If a student forgets the card, the examination office must verify identity before entry. A screenshot of a card is not automatically accepted as a replacement. The timetable is
+TOP3 tfidf window0 unanswerable Q09 3 accounts:window0:0 score=0.2720 offsets=0:232 relevant=False
+EVIDENCE A forgotten password can be reset using the recovery link on the login page. The recovery email is sent to the registered address attached to the student account. If the registered email is unavailable, the student must visit the IT
+UNANSWERABLE Q09 top-ranked chunk is not automatically an answer
+TOP3 tfidf window0 unanswerable Q10 1 handbook:window0:0 score=0.2228 offsets=0:260 relevant=False
+EVIDENCE Coursework must normally be uploaded through the learning portal before the deadline. Late coursework normally receives a penalty when the deadline has already passed. A student who is ill may request an extension before the deadline when a medical certificate
+TOP3 tfidf window0 unanswerable Q10 2 accounts:window0:0 score=0.1345 offsets=0:232 relevant=False
+EVIDENCE A forgotten password can be reset using the recovery link on the login page. The recovery email is sent to the registered address attached to the student account. If the registered email is unavailable, the student must visit the IT
+TOP3 tfidf window0 unanswerable Q10 3 handbook:window0:2 score=0.1305 offsets=510:748 relevant=False
+EVIDENCE An approved extension changes the submission date but does not remove academic integrity rules. If the student cannot open the portal, the student should report the issue to the help desk. During a busy week, the course office may receive
+UNANSWERABLE Q10 top-ranked chunk is not automatically an answer
+HELD OUT METRICS tfidf window0 {'hit3': 0.5, 'mrr3': 0.5, 'search_seconds': 0.001511474000835733, 'query_count': 4}
+TOP3 tfidf window10 test Q05 1 exams:window10:0 score=0.2252 offsets=0:251 relevant=True
+EVIDENCE Students should bring a valid identification card to the examination room. If a student forgets the card, the examination office must verify identity before entry. A screenshot of a card is not automatically accepted as a replacement. The timetable is
+TOP3 tfidf window10 test Q05 2 exams:window10:4 score=0.1768 offsets=761:1007 relevant=False
+EVIDENCE does not describe the rules of any particular institution. The fictional examination office stores the room and date for each paper. A student should read the official notice before travelling to campus for an exam. This synthetic sample does not
+TOP3 tfidf window10 test Q05 3 exams:window10:5 score=0.1701 offsets=954:1134 relevant=False
+EVIDENCE to campus for an exam. This synthetic sample does not describe the rules of any particular institution. Special arrangements must be confirmed by the examination office beforehand.
+TOP3 tfidf window10 test Q06 1 handbook:window10:0 score=0.3335 offsets=0:260 relevant=True
+EVIDENCE Coursework must normally be uploaded through the learning portal before the deadline. Late coursework normally receives a penalty when the deadline has already passed. A student who is ill may request an extension before the deadline when a medical certificate
+TOP3 tfidf window10 test Q06 2 library:window10:1 score=0.2178 offsets=174:409 relevant=False
+EVIDENCE a reservation exists the borrower should return the book by the stated due date. An overdue return can lead to a fine shown on the library account. Students can check loan dates in the library portal. Reference-only materials must stay
+TOP3 tfidf window10 test Q06 3 handbook:window10:1 score=0.2174 offsets=193:449 relevant=False
+EVIDENCE request an extension before the deadline when a medical certificate is provided. The course coordinator checks the evidence and confirms whether the extension is approved. A message from a friend is not accepted as medical evidence. The student should keep
+TOP3 tfidf window10 test Q07 1 fees:window10:0 score=0.4794 offsets=0:237 relevant=False
+EVIDENCE The regular fee payment deadline is shown on the student finance page. A student facing financial hardship may request a payment plan before the due date. Only an approved payment plan changes the payment schedule, and it does not cancel
+TOP3 tfidf window10 test Q07 2 fees:window10:1 score=0.1901 offsets=180:431 relevant=False
+EVIDENCE plan changes the payment schedule, and it does not cancel the amount owed. The finance office may ask for supporting information before making a decision. Late requests may be considered separately but approval is not automatic. Students should keep a
+TOP3 tfidf window10 test Q07 3 accounts:window10:2 score=0.1715 offsets=357:618 relevant=False
+EVIDENCE be temporarily locked after repeated failed login attempts. A staff member verifies the request before resetting an account with no email access. Changing a password does not automatically change a course enrolment. Students should sign out of computers they do
+TOP3 tfidf window10 test Q08 1 library:window10:1 score=0.1367 offsets=174:409 relevant=False
+EVIDENCE a reservation exists the borrower should return the book by the stated due date. An overdue return can lead to a fine shown on the library account. Students can check loan dates in the library portal. Reference-only materials must stay
+TOP3 tfidf window10 test Q08 2 accounts:window10:2 score=0.1338 offsets=357:618 relevant=False
+EVIDENCE be temporarily locked after repeated failed login attempts. A staff member verifies the request before resetting an account with no email access. Changing a password does not automatically change a course enrolment. Students should sign out of computers they do
+TOP3 tfidf window10 test Q08 3 exams:window10:4 score=0.1222 offsets=761:1007 relevant=False
+EVIDENCE does not describe the rules of any particular institution. The fictional examination office stores the room and date for each paper. A student should read the official notice before travelling to campus for an exam. This synthetic sample does not
+TOP3 tfidf window10 unanswerable Q09 1 exams:window10:0 score=0.2695 offsets=0:251 relevant=False
+EVIDENCE Students should bring a valid identification card to the examination room. If a student forgets the card, the examination office must verify identity before entry. A screenshot of a card is not automatically accepted as a replacement. The timetable is
+TOP3 tfidf window10 unanswerable Q09 2 handbook:window10:1 score=0.2552 offsets=193:449 relevant=False
+EVIDENCE request an extension before the deadline when a medical certificate is provided. The course coordinator checks the evidence and confirms whether the extension is approved. A message from a friend is not accepted as medical evidence. The student should keep
+TOP3 tfidf window10 unanswerable Q09 3 accounts:window10:0 score=0.2515 offsets=0:232 relevant=False
+EVIDENCE A forgotten password can be reset using the recovery link on the login page. The recovery email is sent to the registered address attached to the student account. If the registered email is unavailable, the student must visit the IT
+UNANSWERABLE Q09 top-ranked chunk is not automatically an answer
+TOP3 tfidf window10 unanswerable Q10 1 handbook:window10:0 score=0.2216 offsets=0:260 relevant=False
+EVIDENCE Coursework must normally be uploaded through the learning portal before the deadline. Late coursework normally receives a penalty when the deadline has already passed. A student who is ill may request an extension before the deadline when a medical certificate
+TOP3 tfidf window10 unanswerable Q10 2 accounts:window10:0 score=0.1192 offsets=0:232 relevant=False
+EVIDENCE A forgotten password can be reset using the recovery link on the login page. The recovery email is sent to the registered address attached to the student account. If the registered email is unavailable, the student must visit the IT
+TOP3 tfidf window10 unanswerable Q10 3 handbook:window10:2 score=0.1147 offsets=389:636 relevant=False
+EVIDENCE is not accepted as medical evidence. The student should keep the upload receipt and the response from the course office. An approved extension changes the submission date but does not remove academic integrity rules. If the student cannot open the
+UNANSWERABLE Q10 top-ranked chunk is not automatically an answer
+HELD OUT METRICS tfidf window10 {'hit3': 0.5, 'mrr3': 0.5, 'search_seconds': 0.00172762399961357, 'query_count': 4}
+TOP3 tfidf sentence test Q05 1 exams:sentence:0 score=0.2268 offsets=0:234 relevant=True
+EVIDENCE Students should bring a valid identification card to the examination room. If a student forgets the card, the examination office must verify identity before entry. A screenshot of a card is not automatically accepted as a replacement.
+TOP3 tfidf sentence test Q05 2 accounts:sentence:2 score=0.1966 offsets=416:627 relevant=False
+EVIDENCE A staff member verifies the request before resetting an account with no email access. Changing a password does not automatically change a course enrolment. Students should sign out of computers they do not own.
+TOP3 tfidf sentence test Q05 3 exams:sentence:4 score=0.1815 offsets=893:1134 relevant=False
+EVIDENCE A student should read the official notice before travelling to campus for an exam. This synthetic sample does not describe the rules of any particular institution. Special arrangements must be confirmed by the examination office beforehand.
+TOP3 tfidf sentence test Q06 1 handbook:sentence:0 score=0.2712 offsets=0:167 relevant=True
+EVIDENCE Coursework must normally be uploaded through the learning portal before the deadline. Late coursework normally receives a penalty when the deadline has already passed.
+TOP3 tfidf sentence test Q06 2 handbook:sentence:1 score=0.2365 offsets=167:364 relevant=False
+EVIDENCE A student who is ill may request an extension before the deadline when a medical certificate is provided. The course coordinator checks the evidence and confirms whether the extension is approved.
+TOP3 tfidf sentence test Q06 3 library:sentence:1 score=0.2296 offsets=168:374 relevant=False
+EVIDENCE When a reservation exists the borrower should return the book by the stated due date. An overdue return can lead to a fine shown on the library account. Students can check loan dates in the library portal.
+TOP3 tfidf sentence test Q07 1 fees:sentence:1 score=0.3186 offsets=154:408 relevant=True
+EVIDENCE Only an approved payment plan changes the payment schedule, and it does not cancel the amount owed. The finance office may ask for supporting information before making a decision. Late requests may be considered separately but approval is not automatic.
+TOP3 tfidf sentence test Q07 2 fees:sentence:0 score=0.2439 offsets=0:154 relevant=False
+EVIDENCE The regular fee payment deadline is shown on the student finance page. A student facing financial hardship may request a payment plan before the due date.
+TOP3 tfidf sentence test Q07 3 accounts:sentence:2 score=0.1878 offsets=416:627 relevant=False
+EVIDENCE A staff member verifies the request before resetting an account with no email access. Changing a password does not automatically change a course enrolment. Students should sign out of computers they do not own.
+TOP3 tfidf sentence test Q08 1 accounts:sentence:2 score=0.1726 offsets=416:627 relevant=False
+EVIDENCE A staff member verifies the request before resetting an account with no email access. Changing a password does not automatically change a course enrolment. Students should sign out of computers they do not own.
+TOP3 tfidf sentence test Q08 2 library:sentence:1 score=0.1481 offsets=168:374 relevant=False
+EVIDENCE When a reservation exists the borrower should return the book by the stated due date. An overdue return can lead to a fine shown on the library account. Students can check loan dates in the library portal.
+TOP3 tfidf sentence test Q08 3 exams:sentence:4 score=0.1221 offsets=893:1134 relevant=False
+EVIDENCE A student should read the official notice before travelling to campus for an exam. This synthetic sample does not describe the rules of any particular institution. Special arrangements must be confirmed by the examination office beforehand.
+TOP3 tfidf sentence unanswerable Q09 1 handbook:sentence:1 score=0.2844 offsets=167:364 relevant=False
+EVIDENCE A student who is ill may request an extension before the deadline when a medical certificate is provided. The course coordinator checks the evidence and confirms whether the extension is approved.
+TOP3 tfidf sentence unanswerable Q09 2 exams:sentence:0 score=0.2154 offsets=0:234 relevant=False
+EVIDENCE Students should bring a valid identification card to the examination room. If a student forgets the card, the examination office must verify identity before entry. A screenshot of a card is not automatically accepted as a replacement.
+TOP3 tfidf sentence unanswerable Q09 3 exams:sentence:3 score=0.1997 offsets=655:893 relevant=False
+EVIDENCE A student should read the official notice before travelling to campus for an exam. This synthetic sample does not describe the rules of any particular institution. The fictional examination office stores the room and date for each paper.
+UNANSWERABLE Q09 top-ranked chunk is not automatically an answer
+TOP3 tfidf sentence unanswerable Q10 1 handbook:sentence:1 score=0.2847 offsets=167:364 relevant=False
+EVIDENCE A student who is ill may request an extension before the deadline when a medical certificate is provided. The course coordinator checks the evidence and confirms whether the extension is approved.
+TOP3 tfidf sentence unanswerable Q10 2 handbook:sentence:3 score=0.1076 offsets=605:799 relevant=False
+EVIDENCE If the student cannot open the portal, the student should report the issue to the help desk. During a busy week, the course office may receive many requests and must record each one accurately.
+TOP3 tfidf sentence unanswerable Q10 3 accounts:sentence:0 score=0.1015 offsets=0:162 relevant=False
+EVIDENCE A forgotten password can be reset using the recovery link on the login page. The recovery email is sent to the registered address attached to the student account.
+UNANSWERABLE Q10 top-ranked chunk is not automatically an answer
+HELD OUT METRICS tfidf sentence {'hit3': 0.75, 'mrr3': 0.75, 'search_seconds': 0.0041637900003479444, 'query_count': 4}
+EXPORTED retrieval_log.csv and retrieval_summary.json
+
+
+
+RUN scenario1_handbook.py: exit=0
+QUERY Can I submit late if I was ill?
+handbook:assessment score=0.2389 
+Late coursework normally has a penalty. Illness may qualify for an extension when a medical certificate is provided before the deadline.
+handbook:contact score=0.0000 
+Send an extension request to the course coordinator and keep the response.
+
+
+
+RUN scenario2_support.py: exit=0
+QUERY I cannot log in and forgot my password
+support:login score=0.2286 
+Reset a forgotten password using the recovery link on the login page. If email is unavailable visit the IT desk.
+support:fees score=0.0000 
+Ask the finance office for help with fee payment plans.
+support:upload score=0.0000 
+Upload coursework through the learning portal.
+
+
+
+RUN scenario3_docs.py: exit=0
+QUERY module not found after starting python
+docs:install score=0.2504 
+Install the package with pip before importing the module.
+docs:run score=0.2307 
+Run the Python script in the folder containing its dependencies.
+docs:errors score=0.0000 
+If import fails check the virtual environment and package installation.
+
+
+
+RUN scenario4_workplace.py: exit=0
+QUERY Can contractors work remotely?
+policy:contract score=0.4755 
+Contractors can work remotely only when a signed contract permits it. Employee rules do not automatically apply.
+policy:staff score=0.0764 
+Employees may request remote work with manager approval. Their normal timetable still applies.
+
+
+
+RUN scenario5_equipment.py: exit=0
+QUERY printer blank paper after printing
+equipment:printer score=0.3648 
+If a printer produces blank pages check ink levels, run the cleaning utility and then print a test page.
+equipment:router score=0.0000 
+If the router drops a connection check cables, power and restart it safely.
+
+
+
+RUN document_chatbot.py exit=0
+Document assistant: sourced evidence suggestions, not automatic policy decisions.
+Backend tfidf strategy sentence type exit to stop
+Question: These are candidate passages; none is automatically confirmed as an answer.
+1 accounts:sentence:0 score=0.2964 source=accounts.txt offsets=0:162
+A forgotten password can be reset using the recovery link on the login page. The recovery email is sent to the registered address attached to the student account.
+2 accounts:sentence:5 score=0.1707 source=accounts.txt offsets=995:1054
+Support messages should not include a clear-text password.
+3 accounts:sentence:2 score=0.0882 source=accounts.txt offsets=416:627
+A staff member verifies the request before resetting an account with no email access. Changing a password does not automatically change a course enrolment. Students should sign out of computers they do not own.
+Does any passage answer your question? Enter its number or n: No supported answer confirmed. Ask a member of staff.
+Question: Please enter a question.
+Question: 
